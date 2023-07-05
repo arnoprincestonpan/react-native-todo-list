@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import Task from './components/Task';
+import tasksData from './data/MyTasks.json';
 
 export default function App() {
 
   const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([]);
+
+  useEffect(() => {
+    setTaskItems(tasksData)
+  }, [])
 
   const handleAddTask = () => {
     Keyboard.dismiss();
